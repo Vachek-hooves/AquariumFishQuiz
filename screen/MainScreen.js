@@ -1,14 +1,29 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import {StyleSheet, View} from 'react-native';
+import {BubleIcon, UserFishIcon} from '../components/IconBtn';
+import MainLayout from '../components/MainLayout';
 
-const MainScreen = () => {
+const MainScreen = ({navigation}) => {
   return (
-    <View>
-      <Text>MainScreen</Text>
-    </View>
+    <MainLayout>
+      <View style={styles.pageLayout}>
+        <UserFishIcon />
+        <View>
+          <BubleIcon onPress={() => navigation.navigate('GameScreen')}>
+            Game
+          </BubleIcon>
+          <BubleIcon>Rules</BubleIcon>
+        </View>
+      </View>
+    </MainLayout>
   );
 };
 
 export default MainScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  pageLayout: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+});

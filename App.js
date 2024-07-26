@@ -1,17 +1,21 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
-import {GreatingScreen, MainScreen} from './screen';
+import {GameScreen, GreatingScreen, MainScreen} from './screen';
+import {AquaProvider} from './store/aqua_context';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="GreatingsScreen" component={GreatingScreen} />
-        <Stack.Screen name="MainScreen" component={MainScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AquaProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name="GreatingsScreen" component={GreatingScreen} />
+          <Stack.Screen name="MainScreen" component={MainScreen} />
+          <Stack.Screen name="GameScreen" component={GameScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AquaProvider>
   );
 }
 
