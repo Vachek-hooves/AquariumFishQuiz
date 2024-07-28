@@ -1,5 +1,7 @@
 export const AQUARIUM = [
   {
+    accessScore:'0',
+    levelScore: '0',
     description:
       'Questions about different species of fish commonly found in aquariums.',
     subject: 'Fish Species',
@@ -78,6 +80,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    accessScore:'0',
+    levelScore: '0',
     description:
       'Questions about how to properly maintain and care for an aquarium.',
     subject: 'Aquarium Maintenance',
@@ -190,6 +194,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    accessScore:'0',
+    levelScore: '0',
     description:
       'Questions about the different types of equipment used in aquariums, such as filters, heaters, and lighting.',
     subject: 'Aquarium Equipment',
@@ -298,6 +304,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    accessScore:'21',
+    levelScore: '0',
     description:
       'Questions about aquatic plants that can be found in aquariums and their care requirements.',
     subject: 'Aquarium Plants',
@@ -377,6 +385,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    accessScore:'30',
+    levelScore: '0',
     description:
       'Questions about water parameters such as pH, ammonia, nitrite, and nitrate levels, and how to manage them.    ',
     subject: 'Aquarium Chemistry',
@@ -476,6 +486,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    accessScore:'36',
+    levelScore: '0',
     description:
       'Questions about recreating natural habitats and ecosystems within an aquarium',
     subject: 'Habitat and Ecosystems',
@@ -591,6 +603,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    accessScore:'45',
+    levelScore: '0',
     description:
       'Questions about invertebrates like shrimp, snails, and corals that are commonly kept in aquariums.',
     subject: 'Aquarium Invertebrates',
@@ -705,6 +719,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    accessScore:'50',
+    levelScore: '0',
     description: 'Questions about common fish diseases and their treatments.',
     subject: 'Aquarium Diseases and Treatments',
     isOpen: true,
@@ -823,6 +839,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    accessScore:'53',
+    levelScore: '0',
     description:
       'Questions about well-known public aquariums around the world and their notable exhibits.',
     subject: 'Famous Aquariums',

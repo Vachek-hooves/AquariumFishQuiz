@@ -1,7 +1,17 @@
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Modal,
+  SafeAreaView,
+} from 'react-native';
 import {useState, useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {COLOR} from '../../const/colors';
 
 const QuizDetails = ({quizData}) => {
+  const navigation = useNavigation();
   const QUESTIONS = quizData.levelQuestions;
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -33,7 +43,7 @@ const QuizDetails = ({quizData}) => {
     setActiveNextBtn(true);
   };
 
-  const renderNextQuestin = () => {
+  const renderNextQuestion = () => {
     if (currentQuestionIndex == QUESTIONS.length - 1) {
       setIsModal(true);
     } else {
@@ -56,10 +66,92 @@ const QuizDetails = ({quizData}) => {
     setTimerOff(false);
   };
 
+  const navigateGameScreen = () => {
+    navigation.navigate('GameScreen');
+  };
+
+  return (
+    <View style={{flex: 1, padding: 10}}>
+      <Question question={QUESTIONS[currentQuestionIndex].question} />
+      <Options
+        options={QUESTIONS[currentQuestionIndex].options}
+        onPress={validationAnswer}
+        isDisable={disableOption}
+        correctOption={correctOption}
+        currentOption={currentOption}
+      />
+      {activeNextBtn && <NextBtn onPress={renderNextQuestion} />}
+      <Modal visible={isModal} animationType="slide" transparent={true}>
+        <ModalWindow
+          score={quizScore}
+          restart={() => restartQuiz()}
+          mainMenuNav={navigateGameScreen}
+        />
+      </Modal>
+    </View>
+  );
+};
+
+const Question = ({question}) => {
   return (
     <View>
-      <Text>QuizDetails</Text>
+      <Text>{question}</Text>
     </View>
+  );
+};
+
+const Options = ({
+  options,
+  onPress,
+  isDisable,
+  correctOption,
+  currentOption,
+}) => {
+  return (
+    <View style={{gap: 10}}>
+      {options.map((option, index) => (
+        <TouchableOpacity
+          key={index}
+          onPress={() => onPress(option)}
+          disabled={isDisable}
+          style={{
+            backgroundColor:
+              option == correctOption
+                ? 'green'
+                : option == currentOption
+                ? 'red'
+                : 'white',
+          }}>
+          <Text style={{fontSize: 20}}>{option}</Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
+};
+
+const NextBtn = ({onPress}) => {
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <Text style={{fontSize: 20}}>Continue</Text>
+    </TouchableOpacity>
+  );
+};
+
+const ModalWindow = ({score, restart, mainMenuNav}) => {
+  return (
+    <SafeAreaView
+      style={{
+        backgroundColor: COLOR.darkBlue + 90,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <View>
+        <Text style={{color: COLOR.white}}>
+          your score for this subject is{score}
+        </Text>
+      </View>
+    </SafeAreaView>
   );
 };
 
