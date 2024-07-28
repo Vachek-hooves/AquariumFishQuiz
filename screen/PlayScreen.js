@@ -4,7 +4,7 @@ import {AquariumContext} from '../store/aqua_context';
 import MainLayout from '../components/MainLayout';
 import {COLOR} from '../const/colors';
 
-const PlayScreen = ({route,navigatin}) => {
+const PlayScreen = ({route, navigation}) => {
   const quizPlayIds = route.params;
   const {aquaData} = useContext(AquariumContext);
 
@@ -14,6 +14,7 @@ const PlayScreen = ({route,navigatin}) => {
     <MainLayout customStyle={styles.mainLayout}>
       {quizLevelData.map((quizLevel, i) => (
         <TouchableOpacity
+          onPress={() => navigation.navigate('PlayQuizScreen', quizLevel)}
           activeOpacity={0.6}
           key={i}
           style={styles.itemContainer}>

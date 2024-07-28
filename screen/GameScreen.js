@@ -38,7 +38,6 @@ const GameScreen = () => {
         ))}
       </View>
       <ChoosenQuizes data={choosenQuizes} />
-      {/* {choosenQuizes.length > 0 && <Text>Play</Text>} */}
     </MainLayout>
   );
 };
