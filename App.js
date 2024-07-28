@@ -1,6 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
-import {GameScreen, GreatingScreen, MainScreen} from './screen';
+import {GameScreen, GreatingScreen, MainScreen, PlayScreen} from './screen';
 import {AquaProvider} from './store/aqua_context';
 
 const Stack = createNativeStackNavigator();
@@ -13,6 +13,7 @@ function App() {
           <Stack.Screen name="GreatingsScreen" component={GreatingScreen} />
           <Stack.Screen name="MainScreen" component={MainScreen} />
           <Stack.Screen name="GameScreen" component={GameScreen} />
+          <Stack.Screen name="PlayScreen" component={PlayScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AquaProvider>

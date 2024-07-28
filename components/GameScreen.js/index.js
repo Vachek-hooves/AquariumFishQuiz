@@ -1,2 +1,4 @@
 import GridItem from './GridItem';
-export {GridItem}
+import ChoosenQuizes from './ChoosenQuizes';
+
+export {GridItem, ChoosenQuizes};

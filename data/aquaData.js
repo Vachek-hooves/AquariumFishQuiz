@@ -1,5 +1,7 @@
 export const AQUARIUM = [
   {
+    description:
+      'Questions about different species of fish commonly found in aquariums.',
     subject: 'Fish Species',
     isOpen: true,
     id: 'fs1',
@@ -76,6 +78,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    description:
+      'Questions about how to properly maintain and care for an aquarium.',
     subject: 'Aquarium Maintenance',
     isOpen: false,
     id: 'am2',
@@ -186,6 +190,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    description:
+      'Questions about the different types of equipment used in aquariums, such as filters, heaters, and lighting.',
     subject: 'Aquarium Equipment',
     isOpen: false,
     id: 'ae3',
@@ -292,6 +298,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    description:
+      'Questions about aquatic plants that can be found in aquariums and their care requirements.',
     subject: 'Aquarium Plants',
     isOpen: true,
     id: 'ap1',
@@ -369,6 +377,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    description:
+      'Questions about water parameters such as pH, ammonia, nitrite, and nitrate levels, and how to manage them.    ',
     subject: 'Aquarium Chemistry',
     isOpen: true,
     id: 'ac1',
@@ -466,6 +476,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    description:
+      'Questions about recreating natural habitats and ecosystems within an aquarium',
     subject: 'Habitat and Ecosystems',
     isOpen: true,
     id: 'he1',
@@ -579,6 +591,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    description:
+      'Questions about invertebrates like shrimp, snails, and corals that are commonly kept in aquariums.',
     subject: 'Aquarium Invertebrates',
     isOpen: true,
     id: 'ai1',
@@ -691,6 +705,7 @@ export const AQUARIUM = [
     ],
   },
   {
+    description: 'Questions about common fish diseases and their treatments.',
     subject: 'Aquarium Diseases and Treatments',
     isOpen: true,
     id: 'adt1',
@@ -808,6 +823,8 @@ export const AQUARIUM = [
     ],
   },
   {
+    description:
+      'Questions about well-known public aquariums around the world and their notable exhibits.',
     subject: 'Famous Aquariums',
     isOpen: true,
     id: 'fa1',
@@ -913,4 +930,3 @@ export const AQUARIUM = [
     ],
   },
 ];
-

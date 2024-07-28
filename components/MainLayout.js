@@ -19,5 +19,6 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: COLOR.blue + 20,
+    
   },
 });

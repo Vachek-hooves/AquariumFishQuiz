@@ -1,16 +1,21 @@
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Pressable,
-} from 'react-native';
+import {StyleSheet, Text, Pressable} from 'react-native';
 import {COLOR} from '../../const/colors';
+import {useState} from 'react';
 
-const GridItem = ({subject}) => {
+const GridItem = ({subject, onPress, isSelected}) => {
+  const [isPressed, setIsPressed] = useState(false);
+
+  const handlePressed = () => {
+    setIsPressed(prevState => !prevState);
+    onPress();
+  };
   return (
-    <TouchableOpacity style={styles.gridItem}>
+    <Pressable
+      onPress={handlePressed}
+      // style={[styles.gridItem, isPressed ? styles.btnPressed : null]}
+      style={[styles.gridItem, isSelected ? styles.btnPressed : null]}>
       <Text style={styles.text}>{subject}</Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
@@ -27,18 +32,24 @@ const styles = StyleSheet.create({
   gridItem: {
     width: '30%', // Ширина кожного елемента
     aspectRatio: 1, // Співвідношення сторін 1:1
-    borderWidth: 1,
+    borderWidth: 2,
     padding: 5,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
     borderRadius: 8,
     backgroundColor: COLOR.light + 90,
+    borderColor:COLOR.ocean
   },
   text: {
     color: COLOR.white,
     fontWeight: '600',
     fontSize: 16,
     textAlign: 'center',
+  },
+  btnPressed: {
+    backgroundColor: COLOR.ocean + 90,
+    borderWidth: 3,
+    borderColor: COLOR.white,
   },
 });
