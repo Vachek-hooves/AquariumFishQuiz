@@ -5,4 +5,6 @@ export const COLOR = {
   ocean: '#0E46A3',
   white: '#FCF8F3',
   light: '#3DC2EC',
+  coral: '#FF7777',
+  lightGreen: '#88D66C',
 };

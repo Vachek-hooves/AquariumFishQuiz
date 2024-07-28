@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
     borderColor:COLOR.ocean
   },
   text: {
-    color: COLOR.white,
-    fontWeight: '600',
+    color: COLOR.darkBlue,
+    fontWeight: '700',
     fontSize: 16,
     textAlign: 'center',
   },

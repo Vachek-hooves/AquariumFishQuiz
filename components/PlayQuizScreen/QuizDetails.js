@@ -9,6 +9,7 @@ import {
 import {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {COLOR} from '../../const/colors';
+import {LoseFish, WinFish} from '../icons';
 
 const QuizDetails = ({quizData}) => {
   const navigation = useNavigation();
@@ -94,8 +95,24 @@ const QuizDetails = ({quizData}) => {
 
 const Question = ({question}) => {
   return (
-    <View>
-      <Text>{question}</Text>
+    <View
+      style={{
+        backgroundColor: COLOR.darkBlue + 90,
+        marginVertical: 10,
+        borderRadius: 8,
+        height: 200,
+        justifyContent: 'center',
+      }}>
+      <Text
+        style={{
+          fontSize: 24,
+          textAlign: 'center',
+          color: COLOR.white,
+          paddingVertical: 5,
+          fontWeight: '600',
+        }}>
+        {question}
+      </Text>
     </View>
   );
 };
@@ -108,7 +125,7 @@ const Options = ({
   currentOption,
 }) => {
   return (
-    <View style={{gap: 10}}>
+    <View style={{gap: 15, marginBottom: 20}}>
       {options.map((option, index) => (
         <TouchableOpacity
           key={index}
@@ -117,12 +134,16 @@ const Options = ({
           style={{
             backgroundColor:
               option == correctOption
-                ? 'green'
+                ? COLOR.lightGreen
                 : option == currentOption
-                ? 'red'
-                : 'white',
+                ? COLOR.coral
+                : COLOR.light + 90,
+            borderRadius: 8,
+            paddingVertical: 5,
+            height: 80,
+            justifyContent: 'center',
           }}>
-          <Text style={{fontSize: 20}}>{option}</Text>
+          <Text style={{fontSize: 26, textAlign: 'center'}}>{option}</Text>
         </TouchableOpacity>
       ))}
     </View>
@@ -131,8 +152,22 @@ const Options = ({
 
 const NextBtn = ({onPress}) => {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <Text style={{fontSize: 20}}>Continue</Text>
+    <TouchableOpacity
+      onPress={onPress}
+      style={{
+        backgroundColor: COLOR.darkBlue,
+        paddingVertical: 16,
+        borderRadius: 8,
+      }}>
+      <Text
+        style={{
+          fontSize: 26,
+          textAlign: 'center',
+          color: COLOR.white,
+          fontWeight: '700',
+        }}>
+        Continue
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -141,15 +176,43 @@ const ModalWindow = ({score, restart, mainMenuNav}) => {
   return (
     <SafeAreaView
       style={{
-        backgroundColor: COLOR.darkBlue + 90,
+        backgroundColor: COLOR.blue,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
       }}>
+      <WinFish />
+
       <View>
-        <Text style={{color: COLOR.white}}>
-          your score for this subject is{score}
+        <Text style={{color: COLOR.white, fontSize: 26}}>
+          Your score for this subject is {score}
         </Text>
+      </View>
+      <View style={{flexDirection: 'row', gap: 10, paddingHorizontal: 10}}>
+        <TouchableOpacity
+          style={{
+            backgroundColor: COLOR.light,
+            padding: 15,
+            borderColor: COLOR.coral,
+            borderRadius: 8,
+            marginVertical: 10,
+            flex: 1,
+            alignItems: 'center',
+          }}>
+          <Text style={{fontSize: 22}}>Save score</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            backgroundColor: COLOR.light,
+            padding: 15,
+            borderColor: COLOR.coral,
+            borderRadius: 8,
+            marginVertical: 10,
+            flex: 1,
+            alignItems: 'center',
+          }}>
+          <Text style={{fontSize: 22}}>Play again</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

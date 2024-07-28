@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     // backgroundColor: COLOR.darkBlue+90,
   },
   renderItemText: {
-    fontSize: 24,
+    fontSize: 20,
     color: COLOR.white,
     fontWeight: '600',
     textAlign: 'center',

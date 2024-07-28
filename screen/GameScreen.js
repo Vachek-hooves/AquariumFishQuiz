@@ -16,7 +16,7 @@ const GameScreen = () => {
       setChoosenQuizes(prevState =>
         prevState.filter(quiz => quiz.id !== item.id),
       );
-    } else if (choosenQuizes.length < 3) {
+    } else if (choosenQuizes.length < 2) {
       // if element not choosen and length less then 3
       setChoosenQuizes(prevState => [...prevState, item]);
     }
