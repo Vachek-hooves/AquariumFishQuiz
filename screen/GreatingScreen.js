@@ -1,5 +1,13 @@
-import {StyleSheet, Text, View, Animated} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Animated,
+  ImageBackground,
+  SafeAreaView,
+} from 'react-native';
 import {useEffect, useRef} from 'react';
+import {COLOR} from '../const/colors';
 
 const GreatingScreen = ({navigation}) => {
   const animation = useRef(new Animated.Value(0)).current;
@@ -13,17 +21,45 @@ const GreatingScreen = ({navigation}) => {
   }, [animation]);
 
   return (
-    <View>
-      <Animated.View style={[{opacity: animation}, styles.subContainer]}>
-        <Text style={styles.text}>Here you are! </Text>
-        <Text style={styles.text}>You are</Text>
-        <Text style={styles.text}>WELCOME TO</Text>
-        <Text style={styles.quizText}>Aquarium Fish Quiz!</Text>
-      </Animated.View>
-    </View>
+    <ImageBackground
+      source={require('../assets/img/bg/Aquabg4.jpg')}
+      style={{flex: 1}}>
+      <View
+        style={{flex: 1, backgroundColor: COLOR.darkBlue + 30, padding: 10}}>
+        <SafeAreaView
+          style={{
+            // justifyContent: 'center',
+            alignItems: 'center',
+            flex: 1,
+          }}>
+          <Animated.View
+            style={[
+              {opacity: animation},
+              {justifyContent: 'space-between', flex: 1},
+            ]}>
+            <View style={{alignItems: 'center'}}>
+              <Text style={styles.text}>Sooo Excited</Text>
+              <Text style={styles.text}>To see you</Text>
+              <Text style={styles.text}>in our</Text>
+            </View>
+            <Text style={styles.quizText}>Aquarium Fish Quiz! </Text>
+          </Animated.View>
+        </SafeAreaView>
+      </View>
+    </ImageBackground>
   );
 };
 
 export default GreatingScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 62,
+  },
+  quizText: {
+    fontSize: 66,
+    color: COLOR.light,
+    textAlign: 'center',
+    fontWeight: '800',
+  },
+});

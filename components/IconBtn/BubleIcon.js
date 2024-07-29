@@ -28,20 +28,16 @@ const styles = StyleSheet.create({
     height: 180,
   },
   image: {
-    tintColor: COLOR.ocean,
     width: '100%',
     height: '100%',
-    borderColor: COLOR.blue,
+    tintColor: COLOR.light,
   },
   text: {
-    color: COLOR.white,
     position: 'absolute',
-    // top: '30%',
     left: '50%',
     transform: [{translateX: -50}, {translateY: -50}],
-    // textAlign: 'center',
-    // alignSelf: 'center'
     fontSize: 42,
     fontWeight: '700',
+    color: COLOR.darkBlue,
   },
 });

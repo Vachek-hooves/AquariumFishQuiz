@@ -1,16 +1,20 @@
-import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
-import React from 'react';
+import {TouchableOpacity, Image} from 'react-native';
 import {COLOR} from '../../const/colors';
+import {useNavigation} from '@react-navigation/native';
 
 const UserFishIcon = () => {
+  const navigation = useNavigation();
+
   return (
-    <TouchableOpacity style={{position: 'absolute', top: 30, right: 50}}>
+    <TouchableOpacity
+      style={{position: 'absolute', top: 30, right: 30}}
+      onPress={() => navigation.navigate('UserScreen')}>
       <Image
         source={require('../../assets/img/icons/fishDark.png')}
         style={{
-          height: 50,
-          width: 50,
-          tintColor: COLOR.darkBlue,
+          height: 70,
+          width: 70,
+          tintColor: COLOR.light,
         }}
       />
     </TouchableOpacity>
@@ -18,5 +22,3 @@ const UserFishIcon = () => {
 };
 
 export default UserFishIcon;
-
-const styles = StyleSheet.create({});

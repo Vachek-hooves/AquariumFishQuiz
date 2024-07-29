@@ -1,6 +1,6 @@
 export const AQUARIUM = [
   {
-    accessScore:'0',
+    accessScore: '0',
     levelScore: '0',
     description:
       'Questions about different species of fish commonly found in aquariums.',
@@ -80,7 +80,7 @@ export const AQUARIUM = [
     ],
   },
   {
-    accessScore:'0',
+    accessScore: '0',
     levelScore: '0',
     description:
       'Questions about how to properly maintain and care for an aquarium.',
@@ -194,7 +194,7 @@ export const AQUARIUM = [
     ],
   },
   {
-    accessScore:'0',
+    accessScore: '15',
     levelScore: '0',
     description:
       'Questions about the different types of equipment used in aquariums, such as filters, heaters, and lighting.',
@@ -304,7 +304,7 @@ export const AQUARIUM = [
     ],
   },
   {
-    accessScore:'21',
+    accessScore: '22',
     levelScore: '0',
     description:
       'Questions about aquatic plants that can be found in aquariums and their care requirements.',
@@ -385,7 +385,7 @@ export const AQUARIUM = [
     ],
   },
   {
-    accessScore:'30',
+    accessScore: '30',
     levelScore: '0',
     description:
       'Questions about water parameters such as pH, ammonia, nitrite, and nitrate levels, and how to manage them.    ',
@@ -486,7 +486,7 @@ export const AQUARIUM = [
     ],
   },
   {
-    accessScore:'36',
+    accessScore: '37',
     levelScore: '0',
     description:
       'Questions about recreating natural habitats and ecosystems within an aquarium',
@@ -603,7 +603,7 @@ export const AQUARIUM = [
     ],
   },
   {
-    accessScore:'45',
+    accessScore: '45',
     levelScore: '0',
     description:
       'Questions about invertebrates like shrimp, snails, and corals that are commonly kept in aquariums.',
@@ -719,7 +719,7 @@ export const AQUARIUM = [
     ],
   },
   {
-    accessScore:'50',
+    accessScore: '55',
     levelScore: '0',
     description: 'Questions about common fish diseases and their treatments.',
     subject: 'Aquarium Diseases and Treatments',
@@ -839,7 +839,7 @@ export const AQUARIUM = [
     ],
   },
   {
-    accessScore:'53',
+    accessScore: '64',
     levelScore: '0',
     description:
       'Questions about well-known public aquariums around the world and their notable exhibits.',

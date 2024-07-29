@@ -1,20 +1,39 @@
-import {StyleSheet, Text, Pressable} from 'react-native';
+import {StyleSheet, Text, Pressable, Alert} from 'react-native';
 import {COLOR} from '../../const/colors';
 import {useState} from 'react';
 
-const GridItem = ({subject, onPress, isSelected}) => {
-  const [isPressed, setIsPressed] = useState(false);
+const GridItem = ({
+  subject,
+  onPress,
+  isSelected,
+  gameScore,
+  accessScore,
+  prevScore,
+}) => {
+  // const [isPressed, setIsPressed] = useState(false);
 
   const handlePressed = () => {
-    setIsPressed(prevState => !prevState);
-    onPress();
+    if (gameScore < parseInt(accessScore, 10)) {
+      Alert.alert(
+        'Notice',
+        `To access this level game score shoul be more then ${accessScore}`,
+      );
+    } else {
+      onPress();
+      console.log(accessScore);
+    }
+    // setIsPressed(prevState => !prevState);
+    // console.log(gameScore);
+    // console.log(gameScore<parseInt(accessScore,10))
   };
   return (
     <Pressable
+      // disabled={gameScore < parseInt(accessScore, 10)}
       onPress={handlePressed}
       // style={[styles.gridItem, isPressed ? styles.btnPressed : null]}
       style={[styles.gridItem, isSelected ? styles.btnPressed : null]}>
       <Text style={styles.text}>{subject}</Text>
+      <Text style={{fontSize: 16, marginTop: 5}}>( {prevScore} )</Text>
     </Pressable>
   );
 };
@@ -27,19 +46,19 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 10,
+    padding: 8,
   },
   gridItem: {
-    width: '30%', // Ширина кожного елемента
-    aspectRatio: 1, // Співвідношення сторін 1:1
+    width: '32%', // each element width
+    aspectRatio: 1, // aspect ratio 1:1
     borderWidth: 2,
-    padding: 5,
+    padding: 2,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
     borderRadius: 8,
     backgroundColor: COLOR.light + 90,
-    borderColor:COLOR.ocean
+    borderColor: COLOR.ocean,
   },
   text: {
     color: COLOR.darkBlue,
@@ -49,7 +68,7 @@ const styles = StyleSheet.create({
   },
   btnPressed: {
     backgroundColor: COLOR.ocean + 90,
-    borderWidth: 3,
+    borderWidth: 2,
     borderColor: COLOR.white,
   },
 });

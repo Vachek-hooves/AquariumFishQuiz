@@ -18,7 +18,6 @@ export default MainLayout;
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: COLOR.blue + 20,
-    
+    backgroundColor: COLOR.darkBlue + 40,
   },
 });

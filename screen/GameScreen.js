@@ -1,13 +1,20 @@
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import MainLayout from '../components/MainLayout';
-import {useContext, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {AquariumContext} from '../store/aqua_context';
 import {ChoosenQuizes, GridItem} from '../components/GameScreen.js';
+import {COLOR} from '../const/colors.js';
 
 const GameScreen = () => {
-  const {aquaData} = useContext(AquariumContext);
+  const {aquaData, gameScore, totalScore} = useContext(AquariumContext);
   const [choosenQuizes, setChoosenQuizes] = useState([]);
+  console.log(aquaData);
   // console.log(choosenQuizes);
+  console.log(gameScore);
+
+  useEffect(() => {
+    totalScore();
+  }, []);
 
   const choosenQuiz = item => {
     const isChoosen = choosenQuizes.some(quiz => quiz.id === item.id);
@@ -16,7 +23,7 @@ const GameScreen = () => {
       setChoosenQuizes(prevState =>
         prevState.filter(quiz => quiz.id !== item.id),
       );
-    } else if (choosenQuizes.length < 2) {
+    } else if (choosenQuizes.length < 1) {
       // if element not choosen and length less then 3
       setChoosenQuizes(prevState => [...prevState, item]);
     }
@@ -25,8 +32,20 @@ const GameScreen = () => {
   const isSelected = item => {
     return choosenQuizes.some(quiz => quiz.id === item.id);
   };
+
   return (
     <MainLayout>
+      <View>
+        <Text
+          style={{
+            textAlign: 'center',
+            fontWeight: '700',
+            fontSize: 26,
+            color: 'red',
+          }}>
+          Total Game Score {gameScore}
+        </Text>
+      </View>
       <View style={styles.gridContainer}>
         {aquaData.map((item, index) => (
           <GridItem
@@ -34,6 +53,9 @@ const GameScreen = () => {
             key={index}
             onPress={() => choosenQuiz(item)}
             isSelected={isSelected(item)}
+            gameScore={gameScore}
+            accessScore={item.accessScore}
+            prevScore={item.levelScore}
           />
         ))}
       </View>
@@ -50,6 +72,6 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 10,
+    padding: 8,
   },
 });

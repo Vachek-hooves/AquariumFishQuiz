@@ -5,15 +5,23 @@ import {
   View,
   Modal,
   SafeAreaView,
+  Alert,
 } from 'react-native';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {COLOR} from '../../const/colors';
 import {LoseFish, WinFish} from '../icons';
+import {AquariumContext} from '../../store/aqua_context';
+import {optionsFontSize, optionsHeightAdjust} from '../../styles/generalStyle';
 
 const QuizDetails = ({quizData}) => {
+  const {setLevelScoreHandle, gameScore} = useContext(AquariumContext);
+  console.log(gameScore);
+
   const navigation = useNavigation();
   const QUESTIONS = quizData.levelQuestions;
+  const QUIZ_ID = quizData.id;
+  const SUBJECT = quizData.subject;
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentOption, setCurrentOptions] = useState(null);
@@ -27,6 +35,7 @@ const QuizDetails = ({quizData}) => {
   const isTimerOver = () => {
     setIsModal(true);
   };
+  
   useEffect(() => {
     if (timerOff) {
       isTimerOver();
@@ -65,6 +74,7 @@ const QuizDetails = ({quizData}) => {
     setQuizScore(0);
     setActiveNextBtn(false);
     setTimerOff(false);
+    setDisableOption(false);
   };
 
   const navigateGameScreen = () => {
@@ -73,6 +83,17 @@ const QuizDetails = ({quizData}) => {
 
   return (
     <View style={{flex: 1, padding: 10}}>
+      <View style={{backgroundColor: COLOR.light + 90, paddingVertical: 3}}>
+        <Text
+          style={{
+            textAlign: 'center',
+            fontWeight: '700',
+            color: COLOR.darkBlue,
+            fontSize: 26,
+          }}>
+          {SUBJECT} ( {currentQuestionIndex + 1}/{QUESTIONS.length})
+        </Text>
+      </View>
       <Question question={QUESTIONS[currentQuestionIndex].question} />
       <Options
         options={QUESTIONS[currentQuestionIndex].options}
@@ -84,9 +105,13 @@ const QuizDetails = ({quizData}) => {
       {activeNextBtn && <NextBtn onPress={renderNextQuestion} />}
       <Modal visible={isModal} animationType="slide" transparent={true}>
         <ModalWindow
+          quizId={QUIZ_ID}
+          setLevelScoreHandle={setLevelScoreHandle}
           score={quizScore}
           restart={() => restartQuiz()}
           mainMenuNav={navigateGameScreen}
+          closeModal={setIsModal}
+          subject={SUBJECT}
         />
       </Modal>
     </View>
@@ -95,24 +120,8 @@ const QuizDetails = ({quizData}) => {
 
 const Question = ({question}) => {
   return (
-    <View
-      style={{
-        backgroundColor: COLOR.darkBlue + 90,
-        marginVertical: 10,
-        borderRadius: 8,
-        height: 200,
-        justifyContent: 'center',
-      }}>
-      <Text
-        style={{
-          fontSize: 24,
-          textAlign: 'center',
-          color: COLOR.white,
-          paddingVertical: 5,
-          fontWeight: '600',
-        }}>
-        {question}
-      </Text>
+    <View style={styles.questionContainer}>
+      <Text style={styles.questionText}>{question}</Text>
     </View>
   );
 };
@@ -140,10 +149,12 @@ const Options = ({
                 : COLOR.light + 90,
             borderRadius: 8,
             paddingVertical: 5,
-            height: 80,
+            height: optionsHeightAdjust(),
             justifyContent: 'center',
           }}>
-          <Text style={{fontSize: 26, textAlign: 'center'}}>{option}</Text>
+          <Text style={{fontSize: optionsFontSize(), textAlign: 'center'}}>
+            {option}
+          </Text>
         </TouchableOpacity>
       ))}
     </View>
@@ -172,7 +183,23 @@ const NextBtn = ({onPress}) => {
   );
 };
 
-const ModalWindow = ({score, restart, mainMenuNav}) => {
+const ModalWindow = ({
+  score,
+  restart,
+  mainMenuNav,
+  setLevelScoreHandle,
+  quizId,
+  closeModal,
+  subject,
+}) => {
+  const setLevelScoreCall = () => {
+    setLevelScoreHandle(quizId, score);
+    Alert.alert('Notice', `${subject} score ${score}. Saved`);
+  };
+  const playAgain = () => {
+    restart();
+    closeModal(false);
+  };
   return (
     <SafeAreaView
       style={{
@@ -182,42 +209,57 @@ const ModalWindow = ({score, restart, mainMenuNav}) => {
         alignItems: 'center',
       }}>
       <WinFish />
-
-      <View>
-        <Text style={{color: COLOR.white, fontSize: 26}}>
-          Your score for this subject is {score}
-        </Text>
-      </View>
+      <Text
+        style={{
+          color: COLOR.white,
+          fontSize: 28,
+          marginVertical: 20,
+          textAlign: 'center',
+        }}>
+        Your "{subject}" score is {score}
+      </Text>
       <View style={{flexDirection: 'row', gap: 10, paddingHorizontal: 10}}>
         <TouchableOpacity
-          style={{
-            backgroundColor: COLOR.light,
-            padding: 15,
-            borderColor: COLOR.coral,
-            borderRadius: 8,
-            marginVertical: 10,
-            flex: 1,
-            alignItems: 'center',
-          }}>
+          onPress={setLevelScoreCall}
+          style={styles.modalWindowBtn}>
           <Text style={{fontSize: 22}}>Save score</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            backgroundColor: COLOR.light,
-            padding: 15,
-            borderColor: COLOR.coral,
-            borderRadius: 8,
-            marginVertical: 10,
-            flex: 1,
-            alignItems: 'center',
-          }}>
+        <TouchableOpacity onPress={playAgain} style={styles.modalWindowBtn}>
           <Text style={{fontSize: 22}}>Play again</Text>
         </TouchableOpacity>
       </View>
+
+      <TouchableOpacity style={styles.modalWindowBtn} onPress={mainMenuNav}>
+        <Text style={{fontSize: 22}}>All Levels</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
 
 export default QuizDetails;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  modalWindowBtn: {
+    backgroundColor: COLOR.light,
+    padding: 15,
+    borderColor: COLOR.coral,
+    borderRadius: 8,
+    marginVertical: 10,
+    // flex: 1,
+    alignItems: 'center',
+  },
+  questionContainer: {
+    backgroundColor: COLOR.darkBlue + 90,
+    marginVertical: 10,
+    borderRadius: 8,
+    height: 200,
+    justifyContent: 'center',
+  },
+  questionText: {
+    fontSize: 24,
+    textAlign: 'center',
+    color: COLOR.white,
+    paddingVertical: 5,
+    fontWeight: '600',
+  },
+});

@@ -72,8 +72,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     height: '100%',
-    // borderWidth: 2,
-    // padding: 10,
     margin: 10,
     borderRadius: 16,
     borderColor: COLOR.ocean,
@@ -87,6 +85,7 @@ const styles = StyleSheet.create({
   text: {
     color: 'red',
     fontSize: 32,
+    textAlign: 'center',
   },
   renderItemView: {
     // backgroundColor: COLOR.blue+90,
@@ -95,12 +94,12 @@ const styles = StyleSheet.create({
     // backgroundColor: COLOR.darkBlue+90,
   },
   renderItemText: {
-    fontSize: 20,
+    fontSize: 26,
     color: COLOR.white,
     fontWeight: '600',
     textAlign: 'center',
   },
   description: {
-    fontSize: 16,
+    fontSize: 20,
   },
 });
