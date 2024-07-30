@@ -1,15 +1,15 @@
 workflows:
   react-native-ios:
-  name: Aquarium Fish Quiz
-  max_build_duration: 120
-  instance_type: mac_mini_m2
-  integrations:
-    app_store_connect: codemagic
-  enviroment:
-    ios_signing:
-      distribution_type: app_store
-      bundle_indentifier: com.aquarium.fishquiz
-    vars:
-      BUNDLE_ID: "com.aquarium.fishquiz"
-      XCODE_WORKSPACE: "AquariumFishQuiz.xcworkspace"
-      XCODE_SCHEME: "AquariumFishQuiz"
+    name: Aquarium Fish Quiz
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: codemagic
+    enviroment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_indentifier: com.aquarium.fishquiz
+      vars:
+        BUNDLE_ID: "com.aquarium.fishquiz"
+        XCODE_WORKSPACE: "AquariumFishQuiz.xcworkspace"
+        XCODE_SCHEME: "AquariumFishQuiz"
