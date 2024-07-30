@@ -37,6 +37,6 @@ const styles = StyleSheet.create({
   numStyle: {
     fontSize: 24,
     textAlign: 'center',
-    color: COLORS.bamboo,
+    // color: COLORS.bamboo,
   },
 });

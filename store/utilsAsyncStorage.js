@@ -17,4 +17,3 @@ export const getStoredData = async () => {
     console.log('Data fetching error-', error);
   }
 };
-
