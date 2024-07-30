@@ -5,7 +5,7 @@ workflows:
     instance_type: mac_mini_m2
     integrations:
       app_store_connect: codemagic
-    enviroment:
+    environment:
       ios_signing:
         distribution_type: app_store
         bundle_indentifier: com.aquarium.fishquiz
