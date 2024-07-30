@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 60,
     borderRadius: 8,
     paddingVertical: 6,
+    marginBottom: 10,
   },
   headerText: {
     fontSize: 20,

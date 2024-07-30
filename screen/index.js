@@ -4,6 +4,7 @@ import GameScreen from './GameScreen';
 import PlayScreen from './PlayScreen';
 import PlayQuizScreen from './PlayQuizScreen';
 import UserScreen from './UserScreen';
+import RulesScreen from './RulesScreen';
 
 export {
   GreatingScreen,
@@ -12,4 +13,5 @@ export {
   PlayScreen,
   PlayQuizScreen,
   UserScreen,
+  RulesScreen,
 };

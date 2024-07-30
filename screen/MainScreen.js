@@ -11,7 +11,9 @@ const MainScreen = ({navigation}) => {
           <BubleIcon onPress={() => navigation.navigate('GameScreen')}>
             Game
           </BubleIcon>
-          <BubleIcon>Rules</BubleIcon>
+          <BubleIcon onPress={() => navigation.navigate('RulesScreen')}>
+            Rules
+          </BubleIcon>
         </View>
       </View>
     </MainLayout>

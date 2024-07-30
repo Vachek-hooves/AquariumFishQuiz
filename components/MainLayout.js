@@ -1,11 +1,11 @@
 import {StyleSheet, SafeAreaView, ImageBackground} from 'react-native';
 import {COLOR} from '../const/colors';
 
-const MainLayout = ({children, customStyle}) => {
+const MainLayout = ({children, customStyle, mainBg}) => {
   return (
     <ImageBackground
       source={require('../assets/img/bg/Aquabg5.jpg')}
-      style={{flex: 1}}>
+      style={[mainBg, {flex: 1}]}>
       <SafeAreaView style={[customStyle, styles.safeArea]}>
         {children}
       </SafeAreaView>

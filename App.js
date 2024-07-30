@@ -6,6 +6,7 @@ import {
   MainScreen,
   PlayQuizScreen,
   PlayScreen,
+  RulesScreen,
   UserScreen,
 } from './screen';
 import {AquaProvider} from './store/aqua_context';
@@ -23,6 +24,7 @@ function App() {
           <Stack.Screen name="PlayScreen" component={PlayScreen} />
           <Stack.Screen name="PlayQuizScreen" component={PlayQuizScreen} />
           <Stack.Screen name="UserScreen" component={UserScreen} />
+          <Stack.Screen name="RulesScreen" component={RulesScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AquaProvider>
