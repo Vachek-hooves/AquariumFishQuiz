@@ -7,7 +7,6 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.aquarium.fishquiz
-        auto_code_signing: true
     integrations:
       app_store_connect: AquariumAppStoreApiKeyName
     scripts:
