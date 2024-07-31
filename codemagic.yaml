@@ -3,19 +3,18 @@ workflows:
     name: Aquarium Fish Quiz
     instance_type: mac_mini_m2
     max_build_duration: 120
-    integrations:
-      app_store_connect: AquariumAppStoreApiKeyName
     environment:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.aquarium.fishquiz
+    integrations:
+      app_store_connect: AquariumAppStoreApiKeyName
       vars:
         APP_ID: 6590616728
         BUNDLE_ID: 'com.aquarium.fishquiz'
         XCODE_WORKSPACE: 'AquariumFishQuiz.xcworkspace'
         XCODE_SCHEME: 'AquariumFishQuiz'
     scripts:
-      - name: Set up code signing settings on Xcode project
         script: xcode-project use-profiles
       - name: Build ipa for distribution
         script: | 
