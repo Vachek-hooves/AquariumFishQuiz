@@ -17,6 +17,9 @@ workflows:
       xcode: latest
       cocoapods: default
     scripts:
+      - name: Install node modules
+        script: |
+          npm install
       - name: Install CocoaPods dependencies
         script: |
           cd ios
