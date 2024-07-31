@@ -9,9 +9,6 @@ workflows:
       events:
         - push
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.aquarium.fishquiz
       vars:
         BUNDLE_ID: 'com.aquarium.fishquiz'
         XCODE_WORKSPACE: 'AquariumFishQuiz.xcworkspace'
