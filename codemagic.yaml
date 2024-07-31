@@ -20,7 +20,7 @@ workflows:
       - name: Install CocoaPods dependencies
         script: |
           gem install cocoapods
-          pod install --repo-update
+          pod install
       - name: Set up provisioning profile settings on  Xcode project
         script: xcode-project use-profiles
       - name: Build iOS unsigned
