@@ -15,7 +15,7 @@ workflows:
         XCODE_WORKSPACE: 'AquariumFishQuiz.xcworkspace'
         XCODE_SCHEME: 'AquariumFishQuiz'
     scripts:
-        script: xcode-project use-profiles
+      - script: xcode-project use-profiles
       - name: Build ipa for distribution
         script: | 
           xcode-project build-ipa \
