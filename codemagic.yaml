@@ -14,11 +14,11 @@ workflows:
         BUNDLE_ID: 'com.aquarium.fishquiz'
         XCODE_WORKSPACE: 'AquariumFishQuiz.xcworkspace'
         XCODE_SCHEME: 'AquariumFishQuiz'
-      scripts:
-        - name: Set up code signing settings on Xcode project
-          script: xcode-project use-profiles
-        - name: Build ipa for distribution
-          script: | 
-            xcode-project build-ipa \
-              --workspace "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
-              --scheme "$XCODE_SCHEME"
+    scripts:
+      - name: Set up code signing settings on Xcode project
+        script: xcode-project use-profiles
+      - name: Build ipa for distribution
+        script: | 
+          xcode-project build-ipa \
+            --workspace "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME"
