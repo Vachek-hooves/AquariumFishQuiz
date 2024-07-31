@@ -21,8 +21,8 @@ workflows:
       cocoapods: default
     scripts:
       - name: Install CocoaPods dependencies
-          script: | 
-            pod install
+        script: | 
+          pod install
       - name: Set up provisioning profile settings on  Xcode project
         script: xcode-project use-profiles
       - name: Build ipa for distribution
