@@ -1,7 +1,7 @@
 workflows:
   react-native-ios:
     name: Aquarium Fish Quiz
-    instance_type: mac_mini
+    instance_type: mac_mini_m1
     max_build_duration: 120
     integrations:
       app_store_connect: AquariumAppStoreApiKeyName
