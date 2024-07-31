@@ -4,12 +4,21 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini_m2
     integrations:
-      app_store_connect: codemagic
+      app_store_connect: AquariumRefName
     environment:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.aquarium.fishquiz
       vars:
-        BUNDLE_ID: "com.aquarium.fishquiz"
-        XCODE_WORKSPACE: "AquariumFishQuiz.xcworkspace"
-        XCODE_SCHEME: "AquariumFishQuiz"
+        APP_ID: 6590616728
+        BUNDLE_ID: 'com.aquarium.fishquiz'
+        XCODE_WORKSPACE: 'AquariumFishQuiz.xcworkspace'
+        XCODE_SCHEME: 'AquariumFishQuiz'
+      scripts:
+        - name: Set up code signing settings on Xcode project
+          script: xcode-project use-profiles
+        - name: Build ipa for distribution
+          script: | 
+            xcode-project build-ipa \
+              --workspace "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
+              --scheme "$XCODE_SCHEME"
