@@ -24,10 +24,8 @@ workflows:
         script: |
           npm install
       - name: Install CocoaPods dependencies
-        script: |
-          cd ios
-          gem install cocoapods
-          pod install
+        script: | 
+          cd ios && pod install
       - name: Set up provisioning profile settings on  Xcode project
         script: |
           cd ios
@@ -35,8 +33,10 @@ workflows:
       - name: Build IPA for distribution
         script: |
           xcode-project build-ipa \
-          --workspace "$CM_BUILD_DIR/ios/AquariumFishQuiz.xcworkspace" \
-          --scheme "$XCODE_SCHEME"
+            --workspace "$CM_BUILD_DIR/ios/AquariumFishQuiz.xcworkspace" \
+            --scheme "AquariumFishQuiz"
     artifacts:
-        - build/ios/ipa/*.ipa
-        - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
