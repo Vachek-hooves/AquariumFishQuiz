@@ -4,11 +4,14 @@ workflows:
     instance_type: mac_mini_m1
     max_build_duration: 120
     integrations:
-      app_store_connect: AquariumAppStoreApiKeyName
+      app_store_connect: CodeSignInCertificate
     triggering:
       events:
         - push
     environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.aquarium.fishquiz
       vars:
         BUNDLE_ID: 'com.aquarium.fishquiz'
         XCODE_WORKSPACE: 'AquariumFishQuiz.xcworkspace'
