@@ -4,7 +4,7 @@ workflows:
     instance_type: mac_mini_m1
     max_build_duration: 120
     integrations:
-      app_store_connect: DistributionCertificate
+      app_store_connect: CodemagicKey
     triggering:
       events:
         - push
@@ -12,6 +12,8 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.aquarium.fishquiz
+        code_sign_identity: "iPhone Distribution"
+        provisioning_profile: CodemagicProvisionProfile
       vars:
         BUNDLE_ID: 'com.aquarium.fishquiz'
         XCODE_WORKSPACE: 'AquariumFishQuiz.xcworkspace'
